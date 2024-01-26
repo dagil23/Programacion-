@@ -1,34 +1,125 @@
-﻿class Ejercicios
+﻿using System;
+
+namespace Ej02_Pantallaspantallas
 {
-    static void Main()
+    /* Crea un programa que permita guardar información sobre las características gráficas de un equipo informático. 
+     * La información relevante es:
+     * Número de pulgadas (short)
+     * Controlador gráfico (string)
+     * Número de colores (short)
+     * Pixeles eje x (int)
+     * Pixeles eje y (int)
+     * Debe ser posible cambiar el número de colores, la resolución de la pantalla y el controlador en cualquier momento, 
+     * así como consultar toda la información concerniente a las características gráficas. Crea alguna instancia de pantalla 
+     * y prueba el funcionamiento.
+     * Nota: todos los campos serán privados, y deberemos crear solo los métodos y accesores o modificadores necesarios para 
+     * poder hacer funcional la aplicación.*/
+    class Pantalla
     {
-        // PruebaExamen examen = new PruebaExamen();
-        // examen.EjecutarExamen();
+        private readonly short numeroPulgadas;
+        private string controladorGrafico;
+        private int numeroColores;
+        private int pixelsX;
+        private int pixelsY;
 
-        // PruebaExamen2 pruebaExamen2 = new PruebaExamen2();
-        // pruebaExamen2.EjecutarExamen2();
-        // MetodoBurbuja metodoBurbuja = new MetodoBurbuja();
-        // metodoBurbuja.Ejecutar();
+        public int GetPixelsX()
+        {
+            return pixelsX;
+        }
 
-        // var empleado = new Empleado("12345678H", "Pepe", 1930);
-        // Console.WriteLine(empleado.Acadena());
-        // var Javier = new Empleado("462132131C","Javi",1566);
-        // Javier.SetCategoria(Categoria.Administrativo);
-        // Console.WriteLine(Javier.Acadena());
+        public void SetPixelsX(int value)
+        {
+            if(value <= 0)
+            {
+                throw new ArgumentOutOfRangeException("Los pixeles del eje X tienen que ser mayor que 0");
+            }
+            pixelsX = value;
+        }
 
-        // Pantalla samsumg = new Pantalla(45,"Controlador",2,40,30);
-        // samsumg.SetPixelsX(10);
-        // samsumg.SetPixelsY(15);
-        // samsumg.SetNumeroColores(3);
-        // samsumg.SetControladorGrafico("Aereo");
-        // samsumg.Acadena();
+        public int GetPixelsY()
+        {
+            return pixelsY;
+        }
 
-    //  Mueble ikea = new(Color.Marron,25,20,30,0,"Zara",1200);
-    //  Console.WriteLine(ikea.Acadena());
-    //  ikea.getFabricantes();
+        public void SetPixelsY(int value)
+        {
+            pixelsY = value;
+        }
 
-    Empresa coyote = new("Como","AyudaHumanitaria","Calle123");
-    coyote.DatosEmpresa();
-    
+        public int GetNumeroColores()
+        {
+            return numeroColores;
+        }
+
+        public void SetNumeroColores(int value)
+        {
+            numeroColores = value;
+        }
+
+        public string GetControladorGrafico()
+        {
+            return controladorGrafico;
+        }
+
+        public void SetControladorGrafico(string value)
+        {
+            controladorGrafico = value;
+        }
+
+        public short GetNumeroPulgadas()
+        {
+            return numeroPulgadas;
+        }
+
+        public Pantalla(string controlador, short pulgadas, int colores, int pixelsX, int pixelsY)
+        {
+            SetControladorGrafico(controlador);
+            controladorGrafico = controlador;
+            numeroPulgadas = pulgadas;
+            SetNumeroColores(colores);
+            SetPixelsX(pixelsX);
+            SetPixelsY(pixelsY);
+        }
+    }
+
+    class Ej02_Pantallaspantallas
+    {
+        static void ModificaDatos(Pantalla p)
+        {
+            Console.Write("\nIntroduzca nombre de controlador: ");
+            p.SetControladorGrafico(Console.ReadLine());
+            Console.Write("Introduzca número de colores: ");
+            p.SetNumeroColores(short.Parse(Console.ReadLine()));
+            Console.Write("Introduzca número de píxels eje X: ");
+            p.SetPixelsX(int.Parse(Console.ReadLine()));
+            Console.Write("Introduzca número de píxels eje Y: ");
+            p.SetPixelsY(int.Parse(Console.ReadLine()));
+        }
+
+        static void MuestraDatos(Pantalla p)
+        {
+            Console.WriteLine("\nNombre de controlador: " + p.GetControladorGrafico());
+            Console.WriteLine("Número de pulgadas: " + p.GetNumeroPulgadas());
+            Console.WriteLine("Número de colores: " + p.GetNumeroColores());
+            Console.WriteLine("Número de píxels Eje X: " + p.GetPixelsX());
+            Console.WriteLine("Número de píxels Eje Y: " + p.GetPixelsY());
+        }
+
+        static void Main()
+        {
+            Console.WriteLine("Ej02 - Consulta y modificación de parámetros de pantallas gráficas\n\n");
+
+            bool modificarDatos;
+            Pantalla pantalla = new Pantalla("ZRX350", 17, 124000, -1, 720);
+            do
+            {
+                MuestraDatos(pantalla);
+                Console.Write("\n¿Desea modificar los parámetros? (S/N): ");
+                modificarDatos = Console.ReadKey().Key == ConsoleKey.S;
+                Console.WriteLine("");
+                if (modificarDatos)
+                    ModificaDatos(pantalla);
+            } while (modificarDatos);
+        }
     }
 }

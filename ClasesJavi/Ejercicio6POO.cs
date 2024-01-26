@@ -23,7 +23,7 @@ public class Empresa{
         return gerente;
     }
 
-    public string GetrazonSocial(string razonSocial){
+    public string GetRazonSocial(string razonSocial){
         return razonSocial;
     }
 
