@@ -6,12 +6,14 @@ public class Empresa{
     private readonly string  cif;
     private readonly string razonSocial;
     private string direccion;
+    private Empleado empleado;
 
-    public Empresa(in string cif,in string razonSocial,in string direccion){
+    public Empresa( string cif, string razonSocial, string direccion, Empleado empleado){
 
         this.cif = cif;
         this.razonSocial = razonSocial;
         this.direccion = direccion;
+        this.empleado = empleado;
 
     }
 
@@ -19,28 +21,28 @@ public class Empresa{
 
     }
 
-    private  string SetNombreGerente(string gerente){
-        return gerente;
+    private  string SetNombreGerente(string value){
+        gere
     }
 
-    public string GetrazonSocial(string razonSocial){
+    public string GetRazonSocial(){
         return razonSocial;
     }
 
-    public string GetDireccion(string direccion){
+    public string GetDireccion(){
         return direccion;
     }
 
-    public string GetCif(string Cif){
-        return Cif;
+    public string GetCif(){
+        return cif;
     }
 
     public void AñadeGerente(in string dni, in string nombre, in int AnoNacimiento){
         
     }
 
-    public void SetDireccion(in string direccion){
-        
+    public void SetDireccion(string value){
+        direccion = value;
     }
 
     public void DatosEmpresa(){

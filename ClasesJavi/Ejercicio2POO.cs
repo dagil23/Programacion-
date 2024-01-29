@@ -36,23 +36,28 @@ class Pantalla
     }
     public void SetPixelsY(int value)
     {
+        if (value <= 0)
+        {
+            throw new ArgumentOutOfRangeException("Los pixeles no pueden ser menor o igual a 0");
+        }
         Pixeles_y = value;
     }
     public int SetPixelsX()
     {
         return Pixeles_x;
     }
-    public string Acadena(){
-        return "El numero de pulgadas es" + numero_pulgadas + "tiene un controlador grafico " + Controlador_grafico + "Y un numero de colores " + Numero_colores + " y unos pixeles de " + Pixeles_x +"x "+ Pixeles_y + "y";
-        
+    public string Acadena()
+    {
+        return "El numero de pulgadas es" + numero_pulgadas + "tiene un controlador grafico " + Controlador_grafico + "Y un numero de colores " + Numero_colores + " y unos pixeles de " + Pixeles_x + "x " + Pixeles_y + "y";
+
     }
     public Pantalla(in short numero_pulgadas, in string Controlador_grafico, in short Numero_colores, in int Pixeles_x, in int Pixeles_y)
     {
-       this.numero_pulgadas = numero_pulgadas;
-       this.Controlador_grafico = Controlador_grafico;
-       this.Numero_colores = Numero_colores;
-       this.Pixeles_x = Pixeles_x;
-       this.Pixeles_y = Pixeles_y;
+        SetNumeroColores(Numero_colores);//Utilizo los set para controlar el manejo de errores, y tener un solo punto de cambio en el programa 
+        SetControladorGrafico(Controlador_grafico);
+        this.numero_pulgadas = numero_pulgadas;
+        SetPixelsX(Pixeles_x);
+        SetPixelsY(Pixeles_y);
 
     }
 

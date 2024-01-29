@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\dgil5\\OneDrive\\Escritorio\\Programacion.GIT\\ClasesJavi\\ClasesJavi.csproj",
+      "projectUniqueName": "C:\\Users\\dgil5\\OneDrive\\Escritorio\\Programacion.GIT\\Programacion-\\ClasesJavi\\ClasesJavi.csproj",
       "projectName": "ClasesJavi",
-      "projectPath": "C:\\Users\\dgil5\\OneDrive\\Escritorio\\Programacion.GIT\\ClasesJavi\\ClasesJavi.csproj",
+      "projectPath": "C:\\Users\\dgil5\\OneDrive\\Escritorio\\Programacion.GIT\\Programacion-\\ClasesJavi\\ClasesJavi.csproj",
       "packagesPath": "C:\\Users\\dgil5\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\dgil5\\OneDrive\\Escritorio\\Programacion.GIT\\ClasesJavi\\obj\\",
+      "outputPath": "C:\\Users\\dgil5\\OneDrive\\Escritorio\\Programacion.GIT\\Programacion-\\ClasesJavi\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\dgil5\\AppData\\Roaming\\NuGet\\NuGet.Config"
