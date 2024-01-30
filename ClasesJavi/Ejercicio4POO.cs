@@ -24,32 +24,26 @@ class Compas{
     public Circulo DibujaCirculo(double value  ){
         return new Circulo();
     }
-}
+
 class Estuche{
-    const int NUMERO_ROTULADORES = 10;
-    private Rotulador[]? rotuladores = null;
-    public Rotulador[]?  GetRotuladores(){
-        if (rotuladores == null)
-        {
-            CrearRotuladores();
-        }
+   public  Rotulador[]  GetRotuladores(Rotulador rotulador){
 
-        return rotuladores;
-         
-    }
-
-    private void CrearRotuladores(){
-        rotuladores = new Rotulador[NUMERO_ROTULADORES];
-        for (int i = 0; i < rotuladores.Length; i++)
-        {
-            rotuladores[i] = new Rotulador();
-        }
-    }
+    return Rotulador 
+   }
 }
 class Rotulador{
 
 }
 class Circulo
 {
+
+    private double radio;
+    public void  Area(){
+
+    }
+}
     
+}
+class Pincel{
+     
 }
