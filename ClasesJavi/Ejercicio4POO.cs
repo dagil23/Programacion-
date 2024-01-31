@@ -19,31 +19,68 @@
 // Rotulado el perímetro de 21,99 cm de color Azul.
 // Pintada el area de  38,48 cm de color Verde.
 
+// Creo las clases independientes que son Circulo, compas y pincel
+
+
+
 class Compas{
 
-    public Circulo DibujaCirculo(double value  ){
-        return new Circulo();
+
+    public Circulo DibujaCirculo(double radio ){
+        return new Circulo(radio);
     }
+}
+ public static class Estuche{
+    
+  public static Rotulador[] GetRotuladores(){
 
-class Estuche{
-   public  Rotulador[]  GetRotuladores(Rotulador rotulador){
 
-    return Rotulador 
-   }
+  }
 }
 class Rotulador{
 
-}
-class Circulo
-{
+    private Color color;
+   public const int NUMERO_ROTULADORES = 10;
+    public void Rotula(){
 
-    private double radio;
-    public void  Area(){
 
     }
+
+
+
+}
+ class Circulo
+{
+    
+    private double radio;
+
+
+   public Circulo(double radio){
+    this.radio = radio;
+   }
+    public double GetRadio(){
+        return radio;
+    }
+    public  double Perimetro(double radio){
+        return radio * radio * Math.PI;
 }
     
+
+ class Pincel{
+     private Color color;
+
+     public Color SetColor(Color color ){
+           return  color;
+     }
 }
-class Pincel{
-     
+
+public enum Colores{
+    Rojo,
+    Amarillo,
+    Verde,
+    Azul,
+    Negro,
+    Blanco
+
+}
 }
