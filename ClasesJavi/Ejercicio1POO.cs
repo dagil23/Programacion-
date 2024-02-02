@@ -4,9 +4,9 @@
 // public class Empleado {
 //     private static double sueldoBase = 1200.0;
 
-//     private string dni;
-//     private string nombre;
-//     private int AnoNacimiento;
+//     private  readonly string dni;
+//     private readonly string nombre;
+//     private readonly int AnoNacimiento;
 //     private Categoria categoria;
 
 //     public Empleado(in string dni, in string nombre, in int AnoNacimiento){
