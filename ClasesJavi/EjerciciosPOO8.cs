@@ -66,7 +66,7 @@ class Programa8{
         }
 
         //Borrar las estrellas
-        // Console.Clear();
+        Console.Clear();
         Console.ReadKey();
     }
 }
