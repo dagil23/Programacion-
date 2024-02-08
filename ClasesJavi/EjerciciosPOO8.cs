@@ -38,35 +38,35 @@ struct Estrella
     }
 }
 
-class Programa8{
+// class Programa8{
 
 
-    static void Main()
-    {
+// //     static void Main()
+// //     {
         
-        Console.WriteLine("Indica el número de estrellas a dibujar: ");
-        int numeroEstrellas = int.Parse(Console.ReadLine() ?? "0");
-        Estrella[] estrellas = new Estrella[numeroEstrellas];
+// //         Console.WriteLine("Indica el número de estrellas a dibujar: ");
+// //         int numeroEstrellas = int.Parse(Console.ReadLine() ?? "0");
+// //         Estrella[] estrellas = new Estrella[numeroEstrellas];
 
-        //Generamos las estrellas
-        Random random = new Random();
-        for (int i = 0; i < numeroEstrellas; i++)
-        {
-            Punto2D puntoAleatorio = new Punto2D(random.Next(0, Console.BufferWidth), random.Next(0, Console.BufferHeight));
-            ConsoleColor colorAleatorio = (ConsoleColor)random.Next(0, 15);
-            estrellas[i] = new Estrella(puntoAleatorio, colorAleatorio);
-        }
+// //         //Generamos las estrellas
+// //         Random random = new Random();
+// //         for (int i = 0; i < numeroEstrellas; i++)
+// //         {
+// //             Punto2D puntoAleatorio = new Punto2D(random.Next(0, Console.BufferWidth), random.Next(0, Console.BufferHeight));
+// //             ConsoleColor colorAleatorio = (ConsoleColor)random.Next(0, 15);
+// //             estrellas[i] = new Estrella(puntoAleatorio, colorAleatorio);
+// //         }
 
-        //Imprimir las estrellas
-        for (int i = 0; i < numeroEstrellas; i++)
-        {
-            Console.ForegroundColor = estrellas[i].color;
-            Console.SetCursorPosition(estrellas[i].punto.X, estrellas[i].punto.Y);
-            Console.Write(estrellas[i].asterisco);
-        }
+// //         //Imprimir las estrellas
+// //         for (int i = 0; i < numeroEstrellas; i++)
+// //         {
+// //             Console.ForegroundColor = estrellas[i].color;
+// //             Console.SetCursorPosition(estrellas[i].punto.X, estrellas[i].punto.Y);
+// //             Console.Write(estrellas[i].asterisco);
+// //         }
 
-        //Borrar las estrellas
-        Console.Clear();
-        Console.ReadKey();
-    }
-}
+// //         //Borrar las estrellas
+// //         Console.Clear();
+// //         Console.ReadKey();
+// //     }
+// // }
