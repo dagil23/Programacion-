@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\alumno\\Desktop\\`Programacion.GIT\\Programacion-\\ClasesJavi\\ClasesJavi.csproj": {}
+    "C:\\Users\\dgil5\\OneDrive\\Escritorio\\Programacion.GIT\\Programacion-\\ClasesJavi\\ClasesJavi.csproj": {}
   },
   "projects": {
-    "C:\\Users\\alumno\\Desktop\\`Programacion.GIT\\Programacion-\\ClasesJavi\\ClasesJavi.csproj": {
+    "C:\\Users\\dgil5\\OneDrive\\Escritorio\\Programacion.GIT\\Programacion-\\ClasesJavi\\ClasesJavi.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\alumno\\Desktop\\`Programacion.GIT\\Programacion-\\ClasesJavi\\ClasesJavi.csproj",
+        "projectUniqueName": "C:\\Users\\dgil5\\OneDrive\\Escritorio\\Programacion.GIT\\Programacion-\\ClasesJavi\\ClasesJavi.csproj",
         "projectName": "ClasesJavi",
-        "projectPath": "C:\\Users\\alumno\\Desktop\\`Programacion.GIT\\Programacion-\\ClasesJavi\\ClasesJavi.csproj",
-        "packagesPath": "C:\\Users\\alumno\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\alumno\\Desktop\\`Programacion.GIT\\Programacion-\\ClasesJavi\\obj\\",
+        "projectPath": "C:\\Users\\dgil5\\OneDrive\\Escritorio\\Programacion.GIT\\Programacion-\\ClasesJavi\\ClasesJavi.csproj",
+        "packagesPath": "C:\\Users\\dgil5\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\dgil5\\OneDrive\\Escritorio\\Programacion.GIT\\Programacion-\\ClasesJavi\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\alumno\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\dgil5\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net6.0"

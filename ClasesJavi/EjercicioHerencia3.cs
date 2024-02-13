@@ -83,14 +83,14 @@ class ElCalculador : ElNoCalculador
 
 
 
-public class Ejercicio3
-{
-    static void Main()
-    {
-        ElCalculador obj = new ElCalculador(8);
-        obj.Factorial();
-        obj.EsPrimo();
-        obj.MostrarResultado();
+// public class Ejercicio3
+// {
+//     static void Main()
+//     {
+//         ElCalculador obj = new ElCalculador(8);
+//         obj.Factorial();
+//         obj.EsPrimo();
+//         obj.MostrarResultado();
         
-    }
-}
+//     }
+// }
