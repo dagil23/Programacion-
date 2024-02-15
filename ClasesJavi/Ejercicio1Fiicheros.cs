@@ -11,7 +11,7 @@
 // // Nota: Busca en la documentación de Microsoft información y ejemplos sobre los mismos.
 
 // public class Ficheros{
-//     static void Main(){
+//     static void Main(args[]){
 //         // string GetExtension(string ruta)
 //         string extension = Path.GetExtension("C:\\Users\\dgil5\\OneDrive\\Escritorio\\Programacion.GIT\\Programacion-\\ClasesJavi\\holaguapo.txt");
 //         Console.WriteLine($"Se ha ejecutado el método GetExtension, y hemos obtenido: {extension}");
