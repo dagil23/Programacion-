@@ -1,10 +1,10 @@
-// A partir del siguiente texto:
-// "Una cadena de muebles a nivel nacional tiene tiendas ubicadas por toda la geografía española.
-// Cada una de estas tiendas de muebles almacena información sobre: sofás, sillas y mesas. De todos ellos es común, como mínimo, color(enumeración), peso, dimensiones (estructura), fabricante y precio. En cambio los sofás incluye información de la tela con el que está tapizado y si es abatible o no, las sillas la longitud del respaldo y las mesas el tipo de madera que está hecho."
+// // A partir del siguiente texto:
+// // "Una cadena de muebles a nivel nacional tiene tiendas ubicadas por toda la geografía española.
+// // Cada una de estas tiendas de muebles almacena información sobre: sofás, sillas y mesas. De todos ellos es común, como mínimo, color(enumeración), peso, dimensiones (estructura), fabricante y precio. En cambio los sofás incluye información de la tela con el que está tapizado y si es abatible o no, las sillas la longitud del respaldo y las mesas el tipo de madera que está hecho."
 
-// Crea una clase Mueble que contenga los campos, constructores y métodos necesarios para recoger la información de un mueble y devolver mediante un método ACadena esa información. Importante que al recoger los valores de color pertenezcan a la enumeración.
+// // Crea una clase Mueble que contenga los campos, constructores y métodos necesarios para recoger la información de un mueble y devolver mediante un método ACadena esa información. Importante que al recoger los valores de color pertenezcan a la enumeración.
 
-// 📌 Nota: Debes de fijarte que el ejercicio pide que hagas solo la clase Mueble, con las características comunes a todos los muebles, el resto de texto se usará en ejercicios posteriores.
+// // 📌 Nota: Debes de fijarte que el ejercicio pide que hagas solo la clase Mueble, con las características comunes a todos los muebles, el resto de texto se usará en ejercicios posteriores.
 
 // class Mueble {
 //     private Color color;
@@ -149,3 +149,4 @@
 //     Azul,
 //     Marron
 // }
+
