@@ -114,28 +114,28 @@ public class TablaImpares : TablaEnteros{
 
 }
 
-public class EjercicioHerencia6{
-    static void Main(){
-        Random aleatorio = new Random();
-        int tamano = 1000;
-        TablaPares tablaNumerosPares = new TablaPares(10);
-        TablaImpares tablaNumerosImpares = new TablaImpares(10);
-        int [] arrayEnteros = new int [tamano];
+// public class EjercicioHerencia6{
+//     static void Main(){
+//         Random aleatorio = new Random();
+//         int tamano = 1000;
+//         TablaPares tablaNumerosPares = new TablaPares(10);
+//         TablaImpares tablaNumerosImpares = new TablaImpares(10);
+//         int [] arrayEnteros = new int [tamano];
 
-        for (int i = 0; i < arrayEnteros.Length; i++)
-        {
-            arrayEnteros[i] = aleatorio.Next(-10,10);
-        }
-        tablaNumerosImpares.GuardarNumerosEnTabla(arrayEnteros);
-        tablaNumerosPares.GuardarNumerosEnTabla(arrayEnteros);
-        Console.WriteLine("Numeros pares: " + tablaNumerosPares.DevuelveTabla());
-        Console.WriteLine("Numeros Impares: " + tablaNumerosImpares.DevuelveTabla());
-        Console.WriteLine("Suma total de las tabla Impares " + tablaNumerosImpares.SumaPropia());
-        Console.WriteLine("Suma total de las tabla Pares " +  tablaNumerosPares.SumaPropia());
+//         for (int i = 0; i < arrayEnteros.Length; i++)
+//         {
+//             arrayEnteros[i] = aleatorio.Next(-10,10);
+//         }
+//         tablaNumerosImpares.GuardarNumerosEnTabla(arrayEnteros);
+//         tablaNumerosPares.GuardarNumerosEnTabla(arrayEnteros);
+//         Console.WriteLine("Numeros pares: " + tablaNumerosPares.DevuelveTabla());
+//         Console.WriteLine("Numeros Impares: " + tablaNumerosImpares.DevuelveTabla());
+//         Console.WriteLine("Suma total de las tabla Impares " + tablaNumerosImpares.SumaPropia());
+//         Console.WriteLine("Suma total de las tabla Pares " +  tablaNumerosPares.SumaPropia());
        
 
 
 
         
-    }
-}
+//     }
+// }
