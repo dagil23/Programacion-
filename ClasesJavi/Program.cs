@@ -11,6 +11,7 @@
 
 interface IEstudios
 {
+
     void EdadMinimaParaEstudiar();
 }
 interface IVisualiza
@@ -20,64 +21,79 @@ interface IVisualiza
 
 abstract class Estudios : IEstudios, IVisualiza
 {
-    private string Nombre { get; set; }
-    private TimeSpan DuracionEstudios { get; set; }
 
-    public Estudios(string nombre, TimeSpan duracionEstudios)
+
+    private string NombreCurso { get; set; }
+    private string Duracion { get; set; }
+
+    public Estudios(string nombreCurso, string duracion)
     {
 
-        Nombre = nombre;
-        DuracionEstudios = duracionEstudios;
+
+        NombreCurso = nombreCurso;
+        Duracion = duracion;
     }
 
+    public abstract void EdadMinimaParaEstudiar();
 
     public void Visualiza()
     {
-        Console.WriteLine($"Nombre {Nombre}\n",
-                            $"Duracion de los estudios {DuracionEstudios}");
-    }
-    public void EdadMinimaParaEstudiar()
-    {
 
+        Console.WriteLine($"Nombre del curso {NombreCurso}\n",
+                        $"Duracion del curso: {Duracion}");
     }
+}
 
-    public class Superior : Estudios
+    class Superior : Estudios
     {
-        private string Ubicacion { get; set; }
-        public Superior(string ubicacion,
-        string nombre,
-         TimeSpan duracionEstudios) : base(nombre, duracionEstudios)
-        {
+        private string Ubicacion{get;set;}
+
+        public Superior(string nombreCurso,string duracion,string ubicacion):base(nombreCurso,duracion){
             Ubicacion = ubicacion;
-            Nombre = nombre;
-            DuracionEstudios = duracionEstudios;
+            
         }
+    public override void EdadMinimaParaEstudiar(){ 
+
+        Console.WriteLine("La edad minima para estudiar es 18 años");
+     }
+        
 
     }
-    public class Medio : Estudios
+    class Medio : Estudios
     {
+        private Superior estudioSuperior;
+        public Medio(string nombreCurso,
+         string duracion,
+         Superior estudioSuperior):base(nombreCurso,duracion){
+            this.estudioSuperior = estudioSuperior;
 
-        private Superior estudio;
-        public Medio(Superior estudio,
-      string nombre,
-       TimeSpan duracionEstudios) : base(nombre, duracionEstudios)
+        }
+
+       public override void EdadMinimaParaEstudiar(){ 
+
+        Console.WriteLine("La edad minima para estudiar es 16 años");
+     }
+
+
+        public void AccesosSuperior(){
+            
+            Console.WriteLine("Estos estudios dan acceso : \n");
+            estudioSuperior.Visualiza();
+        }
+      
+    }
+    class Elemental : Estudios
+    {
+        public Elemental(string nombreCurso, string duracion):base(nombreCurso,duracion){}
+         public override void EdadMinimaParaEstudiar(){ 
+
+        Console.WriteLine("La edad minima para estudiar es 12 años");
+     }
+    }
+    class Program
+    {
+        static void Main()
         {
-            this.estudio = estudio;
-            Nombre = nombre;
-            DuracionEstudios = duracionEstudios;
+
         }
-
-        public void MostrarEstudioSuperior(Superior estudio){
-            Console.WriteLine($"El estudios superior al que le han dado acceso es {estudio}");
-        }
-
-
     }
-}
-class Program
-{
-    static void Main()
-    {
-
-    }
-}
