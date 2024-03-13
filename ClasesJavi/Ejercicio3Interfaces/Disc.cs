@@ -1,4 +1,4 @@
-class Disc{
+public class Disc{
     //Propiedades
     private string[] songs;
     private string artist;
