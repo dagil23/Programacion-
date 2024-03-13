@@ -16,218 +16,218 @@ public class Ejercicio2Ficheros
     static string rutaCarpetaDatos = Path.Combine(root, carpetaNombres, carpetaPepe, carpetaDatos);
     static string rutaFicheroDocumento = Path.Combine(root, carpetaNombres, carpetaJuan, ficheroDocumento);
 
-    static void Main()
-    {
+    // static void Main()
+    // {
 
-        ConsoleKeyInfo key;
+    //     ConsoleKeyInfo key;
 
-        do
-        {
-            Console.WriteLine("¿Qué opción quieres elegir?");
-            Console.WriteLine("0 - CrearArbolDirectorios");
-            Console.WriteLine("1 - Eliminar directorio");
-            Console.WriteLine("2 - Eliminar Fichero");
-            Console.WriteLine("3 - Mostrar información");
-            Console.WriteLine("4 - Mostrar atributos");
-            key = Console.ReadKey();
-            Console.WriteLine();
+    //     do
+    //     {
+    //         Console.WriteLine("¿Qué opción quieres elegir?");
+    //         Console.WriteLine("0 - CrearArbolDirectorios");
+    //         Console.WriteLine("1 - Eliminar directorio");
+    //         Console.WriteLine("2 - Eliminar Fichero");
+    //         Console.WriteLine("3 - Mostrar información");
+    //         Console.WriteLine("4 - Mostrar atributos");
+    //         key = Console.ReadKey();
+    //         Console.WriteLine();
 
-            if (key.Key == ConsoleKey.D0)
-            {
-                CreaArbolDeDirectorios();
-            }
-            else if (key.Key == ConsoleKey.D1)
-            {
-                string rutaABorrar = getRutaABorrar();
-                EliminaDirectorio(rutaABorrar);
-            }
-            else if (key.Key == ConsoleKey.D2)
-            {
-                string ficheroABorrar = getRutaFicheroABorrar();
-                EliminaFichero(ficheroABorrar);
-            }
-            else if (key.Key == ConsoleKey.D3)
-            {
-                string rutaAMostrar = getRutaAMostrar();
-                MuestraInformacion(rutaAMostrar);
-            }
-            else if (key.Key == ConsoleKey.D4)
-            {
-                string ficheroAMostrarAtributos = getFicheroAMostrarAtributos();
-                MuestraInformacion(ficheroAMostrarAtributos);
-            }
-            else
-            {
-                Console.WriteLine("Opción introducido no reconocida. Introduzca una opción reconocida, por favor");
-            }
+    //         if (key.Key == ConsoleKey.D0)
+    //         {
+    //             CreaArbolDeDirectorios();
+    //         }
+    //         else if (key.Key == ConsoleKey.D1)
+    //         {
+    //             string rutaABorrar = getRutaABorrar();
+    //             EliminaDirectorio(rutaABorrar);
+    //         }
+    //         else if (key.Key == ConsoleKey.D2)
+    //         {
+    //             string ficheroABorrar = getRutaFicheroABorrar();
+    //             EliminaFichero(ficheroABorrar);
+    //         }
+    //         else if (key.Key == ConsoleKey.D3)
+    //         {
+    //             string rutaAMostrar = getRutaAMostrar();
+    //             MuestraInformacion(rutaAMostrar);
+    //         }
+    //         else if (key.Key == ConsoleKey.D4)
+    //         {
+    //             string ficheroAMostrarAtributos = getFicheroAMostrarAtributos();
+    //             MuestraInformacion(ficheroAMostrarAtributos);
+    //         }
+    //         else
+    //         {
+    //             Console.WriteLine("Opción introducido no reconocida. Introduzca una opción reconocida, por favor");
+    //         }
 
-        } while (key.Key != ConsoleKey.Escape);
-    }
+    //     } while (key.Key != ConsoleKey.Escape);
+    // }
 
-    private static string getRutaABorrar()
-    {
-        Console.WriteLine("¿Qué directorio quieres borrar?");
-        Console.WriteLine($"0- {rutaCarpetaNombres}");
-        Console.WriteLine($"1- {rutaCarpetaJuan}");
-        Console.WriteLine($"2- {rutaCarpetaPepe}");
-        Console.WriteLine($"3- {rutaCarpetaDatos}");
+    // private static string getRutaABorrar()
+    // {
+    //     Console.WriteLine("¿Qué directorio quieres borrar?");
+    //     Console.WriteLine($"0- {rutaCarpetaNombres}");
+    //     Console.WriteLine($"1- {rutaCarpetaJuan}");
+    //     Console.WriteLine($"2- {rutaCarpetaPepe}");
+    //     Console.WriteLine($"3- {rutaCarpetaDatos}");
 
-        ConsoleKeyInfo newOption = Console.ReadKey();
+    //     ConsoleKeyInfo newOption = Console.ReadKey();
 
-        string ruta = "";
-        if (newOption.Key == ConsoleKey.D0)
-        {
-            ruta = rutaCarpetaNombres;
-        }
-        else if (newOption.Key == ConsoleKey.D1)
-        {
-            ruta = rutaCarpetaJuan;
-        }
-        else if (newOption.Key == ConsoleKey.D2)
-        {
-            ruta = rutaCarpetaPepe;
-        }
-        else if (newOption.Key == ConsoleKey.D3)
-        {
-            ruta = rutaCarpetaDatos;
-        }
-        else
-        {
-            Console.WriteLine("Has metido una opción no contemplada, te devuelvo al menú principal");
-        }
+    //     string ruta = "";
+    //     if (newOption.Key == ConsoleKey.D0)
+    //     {
+    //         ruta = rutaCarpetaNombres;
+    //     }
+    //     else if (newOption.Key == ConsoleKey.D1)
+    //     {
+    //         ruta = rutaCarpetaJuan;
+    //     }
+    //     else if (newOption.Key == ConsoleKey.D2)
+    //     {
+    //         ruta = rutaCarpetaPepe;
+    //     }
+    //     else if (newOption.Key == ConsoleKey.D3)
+    //     {
+    //         ruta = rutaCarpetaDatos;
+    //     }
+    //     else
+    //     {
+    //         Console.WriteLine("Has metido una opción no contemplada, te devuelvo al menú principal");
+    //     }
 
-        return ruta;
-    }
+    //     return ruta;
+    // }
 
-    private static string getRutaFicheroABorrar()
-    {
-        Console.WriteLine("¿Qué fichero quieres borrar?");
-        Console.WriteLine($"0- {rutaFicheroDocumento}");
-        Console.WriteLine("1- Introducir nombre del fichero a borrar");
+    // private static string getRutaFicheroABorrar()
+    // {
+    //     Console.WriteLine("¿Qué fichero quieres borrar?");
+    //     Console.WriteLine($"0- {rutaFicheroDocumento}");
+    //     Console.WriteLine("1- Introducir nombre del fichero a borrar");
 
-        ConsoleKeyInfo newOption = Console.ReadKey();
+    //     ConsoleKeyInfo newOption = Console.ReadKey();
 
-        string ficheroABorrar = "";
-        if (newOption.Key == ConsoleKey.D0)
-        {
-            ficheroABorrar = rutaFicheroDocumento;
-        }
-        else if (newOption.Key == ConsoleKey.D1)
-        {
-            Console.WriteLine("Introduceme el nombre del fichero a borrar");
-            ficheroABorrar = Console.ReadLine() ?? "";
-        }
-        else
-        {
-            Console.WriteLine("Has metido una opción no contemplada, te devuelvo al menú principal");
-        }
+    //     string ficheroABorrar = "";
+    //     if (newOption.Key == ConsoleKey.D0)
+    //     {
+    //         ficheroABorrar = rutaFicheroDocumento;
+    //     }
+    //     else if (newOption.Key == ConsoleKey.D1)
+    //     {
+    //         Console.WriteLine("Introduceme el nombre del fichero a borrar");
+    //         ficheroABorrar = Console.ReadLine() ?? "";
+    //     }
+    //     else
+    //     {
+    //         Console.WriteLine("Has metido una opción no contemplada, te devuelvo al menú principal");
+    //     }
 
-        return ficheroABorrar;
-    }
+    //     return ficheroABorrar;
+    // }
 
-    private static string getRutaAMostrar()
-    {
-        Console.WriteLine("¿Qué directorio quieres mostrar?");
-        Console.WriteLine($"0- {rutaCarpetaNombres}");
-        Console.WriteLine($"1- {rutaCarpetaJuan}");
-        Console.WriteLine($"2- {rutaCarpetaPepe}");
-        Console.WriteLine($"3- {rutaCarpetaDatos}");
+    // private static string getRutaAMostrar()
+    // {
+    //     Console.WriteLine("¿Qué directorio quieres mostrar?");
+    //     Console.WriteLine($"0- {rutaCarpetaNombres}");
+    //     Console.WriteLine($"1- {rutaCarpetaJuan}");
+    //     Console.WriteLine($"2- {rutaCarpetaPepe}");
+    //     Console.WriteLine($"3- {rutaCarpetaDatos}");
 
-        ConsoleKeyInfo newOption = Console.ReadKey();
+    //     ConsoleKeyInfo newOption = Console.ReadKey();
 
-        string rutaAMostrar = "";
-        if (newOption.Key == ConsoleKey.D0)
-        {
-            rutaAMostrar = rutaCarpetaNombres;
-        }
-        else if (newOption.Key == ConsoleKey.D1)
-        {
-            rutaAMostrar = rutaCarpetaJuan;
-        }
-        else if (newOption.Key == ConsoleKey.D2)
-        {
-            rutaAMostrar = rutaCarpetaPepe;
-        }
-        else if (newOption.Key == ConsoleKey.D3)
-        {
-            rutaAMostrar = rutaCarpetaDatos;
-        }
-        else
-        {
-            Console.WriteLine("Has metido una opción no contemplada, te devuelvo al menú principal");
-        }
+    //     string rutaAMostrar = "";
+    //     if (newOption.Key == ConsoleKey.D0)
+    //     {
+    //         rutaAMostrar = rutaCarpetaNombres;
+    //     }
+    //     else if (newOption.Key == ConsoleKey.D1)
+    //     {
+    //         rutaAMostrar = rutaCarpetaJuan;
+    //     }
+    //     else if (newOption.Key == ConsoleKey.D2)
+    //     {
+    //         rutaAMostrar = rutaCarpetaPepe;
+    //     }
+    //     else if (newOption.Key == ConsoleKey.D3)
+    //     {
+    //         rutaAMostrar = rutaCarpetaDatos;
+    //     }
+    //     else
+    //     {
+    //         Console.WriteLine("Has metido una opción no contemplada, te devuelvo al menú principal");
+    //     }
 
-        return rutaAMostrar;
-    }
+    //     return rutaAMostrar;
+    // }
 
-    private static string getFicheroAMostrarAtributos()
-    {
-        Console.WriteLine("¿De cuál fichero quieres ver sus atributos?");
-        Console.WriteLine($"0- {rutaFicheroDocumento}");
-        Console.WriteLine("1- Introducir nombre del fichero");
+    // private static string getFicheroAMostrarAtributos()
+    // {
+    //     Console.WriteLine("¿De cuál fichero quieres ver sus atributos?");
+    //     Console.WriteLine($"0- {rutaFicheroDocumento}");
+    //     Console.WriteLine("1- Introducir nombre del fichero");
 
-        ConsoleKeyInfo newOption = Console.ReadKey();
+    //     ConsoleKeyInfo newOption = Console.ReadKey();
 
-        string ficheroAMostrarAtributos = "";
-        if (newOption.Key == ConsoleKey.D0)
-        {
-            ficheroAMostrarAtributos = rutaFicheroDocumento;
-        }
-        else if (newOption.Key == ConsoleKey.D1)
-        {
-            Console.WriteLine("Introduceme el nombre del fichero");
-            ficheroAMostrarAtributos = Console.ReadLine() ?? "";
-        }
-        else
-        {
-            Console.WriteLine("Has metido una opción no contemplada, te devuelvo al menú principal");
-        }
+    //     string ficheroAMostrarAtributos = "";
+    //     if (newOption.Key == ConsoleKey.D0)
+    //     {
+    //         ficheroAMostrarAtributos = rutaFicheroDocumento;
+    //     }
+    //     else if (newOption.Key == ConsoleKey.D1)
+    //     {
+    //         Console.WriteLine("Introduceme el nombre del fichero");
+    //         ficheroAMostrarAtributos = Console.ReadLine() ?? "";
+    //     }
+    //     else
+    //     {
+    //         Console.WriteLine("Has metido una opción no contemplada, te devuelvo al menú principal");
+    //     }
 
-        return ficheroAMostrarAtributos;
-    }
+    //     return ficheroAMostrarAtributos;
+    // }
 
-    private static void CreaArbolDeDirectorios()
-    {
-        string[] rutasCarpetas = {
-            rutaCarpetaNombres,
-            rutaCarpetaJuan,
-            rutaCarpetaPepe,
-            rutaCarpetaDatos,
-        };
+    // private static void CreaArbolDeDirectorios()
+    // {
+    //     string[] rutasCarpetas = {
+    //         rutaCarpetaNombres,
+    //         rutaCarpetaJuan,
+    //         rutaCarpetaPepe,
+    //         rutaCarpetaDatos,
+    //     };
 
-        string[] rutasFicheros = {
-            rutaFicheroDocumento
-        };
+    //     string[] rutasFicheros = {
+    //         rutaFicheroDocumento
+    //     };
 
-        Directory.CreateDirectory(rutaCarpetaNombres);
+    //     Directory.CreateDirectory(rutaCarpetaNombres);
        
 
-        foreach (string ruta in rutasCarpetas)
-        {
-            if (doesPathExist(ruta, false))
-            {
-                Console.WriteLine($"La carpeta {ruta} existe.");
-            }
-            else
-            {
-                Console.WriteLine($"La carpeta {ruta} no existe. Lo creamos,");
-                crearCarpeta(ruta);
-            }
-        }
+    //     foreach (string ruta in rutasCarpetas)
+    //     {
+    //         if (doesPathExist(ruta, false))
+    //         {
+    //             Console.WriteLine($"La carpeta {ruta} existe.");
+    //         }
+    //         else
+    //         {
+    //             Console.WriteLine($"La carpeta {ruta} no existe. Lo creamos,");
+    //             crearCarpeta(ruta);
+    //         }
+    //     }
 
-        foreach (string ruta in rutasFicheros)
-        {
-            if (doesPathExist(ruta, true))
-            {
-                Console.WriteLine($"El fichero {ruta} existe.");
-            }
-            else
-            {
-                Console.WriteLine($"El fichero {ruta} no existe. Lo creamos,");
-                crearFichero(ruta);
-            }
-        }
-    }
+    //     foreach (string ruta in rutasFicheros)
+    //     {
+    //         if (doesPathExist(ruta, true))
+    //         {
+    //             Console.WriteLine($"El fichero {ruta} existe.");
+    //         }
+    //         else
+    //         {
+    //             Console.WriteLine($"El fichero {ruta} no existe. Lo creamos,");
+    //             crearFichero(ruta);
+    //         }
+    //     }
+    // }
 
     private static bool doesPathExist(string path, bool isFile)
     {
