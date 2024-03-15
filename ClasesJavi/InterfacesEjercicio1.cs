@@ -76,43 +76,43 @@ public class Cuadrado : IFigura
 }
 
 
-public class Program
-{
-    static void Main()
-    {
+// public class Program
+// {
+//     static void Main()
+//     {
 
-        //Solucion Dani
-        Circulo figura1 = new Circulo(3);
-        Cuadrado figura2 = new Cuadrado(4);
-        Rectangulo figura3 = new Rectangulo(70,7);
+//         //Solucion Dani
+//         Circulo figura1 = new Circulo(3);
+//         Cuadrado figura2 = new Cuadrado(4);
+//         Rectangulo figura3 = new Rectangulo(70,7);
 
-       Console.WriteLine(figura1.Area());
-       Console.WriteLine(figura1.Perimetro());
-       figura1.Dibuja();
+//        Console.WriteLine(figura1.Area());
+//        Console.WriteLine(figura1.Perimetro());
+//        figura1.Dibuja();
 
        
-       Console.WriteLine(figura2.Area());
-       Console.WriteLine(figura2.Perimetro());
-       figura2.Dibuja();
+//        Console.WriteLine(figura2.Area());
+//        Console.WriteLine(figura2.Perimetro());
+//        figura2.Dibuja();
 
-        Console.WriteLine(figura3.Area());
-       Console.WriteLine(figura3.Perimetro());
-       figura3.Dibuja();
+//         Console.WriteLine(figura3.Area());
+//        Console.WriteLine(figura3.Perimetro());
+//        figura3.Dibuja();
 
-        //Solucion interfaces
-       IFigura[] figuras = new IFigura[]{
-            new Circulo(3),
-            new Cuadrado(4),
-            new Rectangulo(70, 7),
-            new Circulo(5), 
-            new Cuadrado(7), 
-            new Rectangulo(1,1)
-        };
+//         //Solucion interfaces
+//        IFigura[] figuras = new IFigura[]{
+//             new Circulo(3),
+//             new Cuadrado(4),
+//             new Rectangulo(70, 7),
+//             new Circulo(5), 
+//             new Cuadrado(7), 
+//             new Rectangulo(1,1)
+//         };
 
-       foreach (IFigura figura in figuras) {
-            figura.Dibuja();
-            Console.WriteLine(figura.Area());
-            Console.WriteLine(figura.Perimetro());
-       }
-    }
-}
+//        foreach (IFigura figura in figuras) {
+//             figura.Dibuja();
+//             Console.WriteLine(figura.Area());
+//             Console.WriteLine(figura.Perimetro());
+//        }
+//     }
+// }

@@ -26,7 +26,7 @@ public class DABRadio : IMedia
     public DABRadio(){
         Frecuency = MIN_FRECUENCY;
         State = MediaState.Stopped;
-        MessageToDisplay = "";
+        MessageToDisplay = "Modo Radio";
     }
 
     public void Next()

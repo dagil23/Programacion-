@@ -11,51 +11,57 @@
 
 using System.Data;
 
-public class  DABRadioCD : IMedia
+public class DABRadioCD : IMedia
 {
     //Propiedades
-    IMedia ActiveDevice{get;set;}
-    private CDPlayer ReproductorCD{get;set;}
-    private DABRadio ReproductorRadio {get;set;}
-    private Disc CompatDisc {get;set;}
-    public string MessageToDisplay {get;}
+    IMedia ActiveDevice { get; set; }
+    private CDPlayer ReproductorCD { get; set; }
+    private DABRadio ReproductorRadio { get; set; }
+    private Disc CompatDisc { get; set; }
+    public string MessageToDisplay { get; set; }
 
     //Constructores
-    public DABRadioCD(){
-
-        ActiveDevice = ReproductorCD;
+    public DABRadioCD()
+    {
+        ActiveDevice = ReproductorRadio;
         ReproductorCD = new CDPlayer();
         ReproductorRadio = new DABRadio();
-        MessageToDisplay = "";
+        MessageToDisplay = "[1]Play\n[2]Pause\n[3]Stop\n[4]Prev\n[5]Next\n[6]Switch\n[7]Insert CD\n[8]Extract CD\n[ESC]Turn off";
+
     }
 
     //Metodos de la Interfaz IMedia
     public void Next()
     {
-        throw new NotImplementedException();
+        ActiveDevice.Next();
     }
 
     public void Pause()
     {
-        throw new NotImplementedException();
+        ActiveDevice.Pause();
+
     }
 
     public void Play()
     {
-        throw new NotImplementedException();
+        ActiveDevice.Play();
+
     }
 
     public void Previous()
     {
-        throw new NotImplementedException();
+        ActiveDevice.Previous();
+
     }
 
     public void Stop()
     {
-        throw new NotImplementedException();
+        ActiveDevice.Stop();
+
     }
 
-    public void InsertarDisco(Disc media){
+    public void InsertCD(Disc media)
+    {
         if (CompatDisc != null)
         {
             throw new Exception("Ya hay un dico Insertado");
@@ -64,14 +70,28 @@ public class  DABRadioCD : IMedia
     }
 
     //Metodos de mi clase
-    public void ExtractMedia(){
-
+    public void ExtractMedia()
+    {
+        if (CompatDisc != null)
+        {
+            ActiveDevice = ReproductorRadio;
+        }
     }
-    
-    public void SwitchMode(){
-     
-     Console.WriteLine("Estas son las opcines de NUESTRO DABRadioCD ");
-     Console.WriteLine("[1]Play\n [2]Pause\n [3]Stop\n [4]Prev\n [5]Next\n [6]Switch\n [7]Insert CD\n [8]Extract CD\n, [ESC]Turn off");
-            
+
+    public void SwitchMode()
+    {
+        //  Intercambiar modo: Pasará de CD a DAB o viceversa. Teniendo en cuenta que si pasamos a CD este empezará a reproducir donde se quedó.
+        if (ActiveDevice == ReproductorCD)
+        {
+            ActiveDevice = ReproductorRadio;
+            MessageToDisplay = $"Modo {ReproductorRadio.ToString()}";
+        }
+        else if (ActiveDevice == ReproductorRadio)
+        {
+            ActiveDevice = ReproductorCD;
+            ReproductorCD.Play();
+            MessageToDisplay = $"Modo {ReproductorCD.ToString()}";
+
+        }
     }
 }
