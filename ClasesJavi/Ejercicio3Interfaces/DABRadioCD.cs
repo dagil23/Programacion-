@@ -14,50 +14,79 @@ using System.Data;
 public class DABRadioCD : IMedia
 {
     //Propiedades
-    IMedia ActiveDevice { get; set; }
+    IMedia? ActiveDevice { get; set; }
     private CDPlayer ReproductorCD { get; set; }
     private DABRadio ReproductorRadio { get; set; }
-    private Disc CompatDisc { get; set; }
+    private Disc? CompatDisc { get; set; }
+    private bool isRadioActive = true;
+    public bool IsRadioActive {
+        get {
+            return isRadioActive;
+        } 
+        set {
+            isRadioActive = value;
+            
+            if (isRadioActive) {
+                MessageToDisplay = "MODO: Radio\n";
+                MessageToDisplay += $"STATE: {ReproductorRadio.MessageToDisplay}\n";
+            } else {
+                MessageToDisplay = "MODO: CD\n";
+                MessageToDisplay += $"STATE: {ReproductorCD.MessageToDisplay}\n";
+            }
+            
+            MessageToDisplay += "[1]Play [2]Pause [3]Stop [4]Prev [5]Next [6]Switch [7]Insert CD [8]Extract CD, [ESC]Turn off";
+        }
+    }
+
     public string MessageToDisplay { get; set; }
 
     //Constructores
     public DABRadioCD()
     {
-        ActiveDevice = ReproductorRadio;
         ReproductorCD = new CDPlayer();
         ReproductorRadio = new DABRadio();
-        MessageToDisplay = "[1]Play\n[2]Pause\n[3]Stop\n[4]Prev\n[5]Next\n[6]Switch\n[7]Insert CD\n[8]Extract CD\n[ESC]Turn off";
+        ActiveDevice = ReproductorRadio;
+        MessageToDisplay = "";
+        updateMediaState();
+    }
 
+    private void updateMediaState() {
+        if (ActiveDevice == ReproductorRadio) {
+            IsRadioActive = true;
+        } else {
+            IsRadioActive = false;
+        }
     }
 
     //Metodos de la Interfaz IMedia
     public void Next()
     {
-        ActiveDevice.Next();
+        ActiveDevice?.Next();
+        updateMediaState();
     }
 
     public void Pause()
     {
-        ActiveDevice.Pause();
-
+        ActiveDevice?.Pause();
+        updateMediaState();
     }
 
     public void Play()
     {
-        ActiveDevice.Play();
-
+        ActiveDevice?.Play();
+        updateMediaState();
     }
 
     public void Previous()
     {
-        ActiveDevice.Previous();
-
+        ActiveDevice?.Previous();
+        updateMediaState();
     }
 
     public void Stop()
     {
-        ActiveDevice.Stop();
-
+        ActiveDevice?.Stop();
+        updateMediaState();
     }
 
     public void InsertCD(Disc media)
@@ -66,16 +95,20 @@ public class DABRadioCD : IMedia
         {
             throw new Exception("Ya hay un dico Insertado");
         }
+        ActiveDevice = ReproductorCD;
         CompatDisc = media;
+        ReproductorCD.InsertMedia(CompatDisc);
+        ActiveDevice.Play();
+        updateMediaState();
     }
 
     //Metodos de mi clase
     public void ExtractMedia()
     {
-        if (CompatDisc != null)
-        {
-            ActiveDevice = ReproductorRadio;
-        }
+        CompatDisc = null;
+        ActiveDevice = ReproductorRadio;
+        ReproductorCD.extractMedia();
+        updateMediaState();
     }
 
     public void SwitchMode()
@@ -84,14 +117,13 @@ public class DABRadioCD : IMedia
         if (ActiveDevice == ReproductorCD)
         {
             ActiveDevice = ReproductorRadio;
-            MessageToDisplay = $"Modo {ReproductorRadio.ToString()}";
         }
         else if (ActiveDevice == ReproductorRadio)
         {
             ActiveDevice = ReproductorCD;
-            ReproductorCD.Play();
-            MessageToDisplay = $"Modo {ReproductorCD.ToString()}";
-
         }
+
+        ActiveDevice?.Play();
+        updateMediaState();
     }
 }

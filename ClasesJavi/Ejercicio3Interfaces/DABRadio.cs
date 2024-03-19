@@ -21,25 +21,23 @@ public class DABRadio : IMedia
     public string MessageToDisplay{get;set;}
     private float Frecuency;
 
-    private MediaState State{get;set;}
+    public MediaState State{get;set;}
 
     public DABRadio(){
         Frecuency = MIN_FRECUENCY;
         State = MediaState.Stopped;
-        MessageToDisplay = "Modo Radio";
+        MessageToDisplay = "RADIO OFF";
     }
 
     public void Next()
     {
         Frecuency += SEEK_STEEP;
         
-        if (Frecuency >= MAX_FREQUENCY) {
+        if (Frecuency > MAX_FREQUENCY) {
                 Frecuency = MIN_FRECUENCY;
         }
 
-        if (State == MediaState.Stopped || State == MediaState.Paused) {
-            Play();
-        }
+        Play();
     }
 
     public void Pause()
@@ -71,13 +69,11 @@ public class DABRadio : IMedia
     {
         Frecuency -= SEEK_STEEP;
         
-        if (Frecuency >= MIN_FRECUENCY) {
+        if (Frecuency < MIN_FRECUENCY) {
                 Frecuency = MAX_FREQUENCY;
         }
 
-        if (State == MediaState.Stopped || State == MediaState.Paused) {
-            Play();
-        } 
+        Play();
     }
 
     public void Stop()

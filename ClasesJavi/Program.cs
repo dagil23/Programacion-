@@ -21,7 +21,7 @@
                 radioCD.Pause();
                 break;
                 case '3':
-                radioCD.Pause();
+                radioCD.Stop();
                 break;
                 case '4':
                 radioCD.Previous();

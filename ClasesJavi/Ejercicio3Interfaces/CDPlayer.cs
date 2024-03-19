@@ -66,12 +66,12 @@ class CDPlayer : IMedia
     public void InsertMedia(Disc media)
     {
         Disco = media;
-        Track = 1;
+        Track = 0;
     }
 
     public bool extractMedia()
     {
-        if (Disco != null)
+        if (Disco == null)
         {
             return false;
         }
@@ -91,11 +91,14 @@ class CDPlayer : IMedia
 
                 int nextTrack = Track + 1;
 
-                if (nextTrack >= cantidadCanciones)
+                if (nextTrack > cantidadCanciones-1)
                 {
-                    Track = 1;
+                    Track = 0;
+                } else {
+                    Track = (ushort)nextTrack;
                 }
 
+                Play();
             }
         
     }
@@ -124,15 +127,12 @@ class CDPlayer : IMedia
             if (state == MediaState.Stopped)
             {
                 //Reproducir desde la pista 1
-                Track = 1;
-            }
-            else if (state == MediaState.Paused)
-            {
-                //Reproducir desde la pista en la que se encuentre.
+                Track = 0;
             }
 
             //Devolviendo en MessageToDisplay el estado, la información del CD y la pista que está sonando
             //PLAYING... Album: Thriller Artist: Michael Jackson Track 1 - Wanna Be Startin' Somethin
+            State = MediaState.Playing;
             messageToDisplay = $"PLAYING... {Disco?.ToString()} - {Disco?.NombreCancion(Track)}";
         }
 
@@ -147,11 +147,14 @@ class CDPlayer : IMedia
 
                 int nextTrack = Track - 1;
 
-                if (nextTrack <= 0)
+                if (nextTrack < 0)
                 {
-                    Track = (ushort)cantidadCanciones;
+                    Track = (ushort)(cantidadCanciones-1);
+                } else {
+                    Track = (ushort)nextTrack;
                 }
 
+                Play();
             }
     }
 
