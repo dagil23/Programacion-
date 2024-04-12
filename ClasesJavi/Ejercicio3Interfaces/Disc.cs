@@ -39,4 +39,12 @@ public class Disc{
     public string NombreCancion(int index) {
         return Songs[index];
     }
+    public string this[int index]{
+        get{
+            return songs[index];
+        }
+        set{
+            songs[index] = value;
+        }
+    }
 }
