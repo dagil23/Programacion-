@@ -12,7 +12,7 @@
 
 // Next/Previous: Si esta sonando moverá el dial a la anterior o siguiente frecuencia, con saltos de 0,5 MHz cada vez que se pulse. Si llega al final de la banda (MAX_FREQUENCY) irá al principio de la misma y viceversa. Además, si está pausada empezará a reproducir desde la nueva frecuencia.
 
-public class DABRadio : IMedia
+public class DABRadio : IMedia, IComparable
 {
 
     private const float SEEK_STEEP = 0.5F;
@@ -80,5 +80,11 @@ public class DABRadio : IMedia
     {
        State = MediaState.Stopped;
        MessageToDisplay = "RADIO OFF";
+    }
+
+    public int CompareTo(object? obj)
+    {
+        DABRadio paramObj = (DABRadio)obj;
+        return (this.Frecuency > paramObj?.Frecuency) ? 1: 0;
     }
 }
