@@ -55,6 +55,8 @@ class CDPlayer : IMedia
         }
     }
 
+    public string Name => "CDPlayer";
+
     //Constructores
     public CDPlayer()
     {

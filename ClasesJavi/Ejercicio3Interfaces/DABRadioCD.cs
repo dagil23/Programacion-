@@ -40,6 +40,8 @@ public class DABRadioCD : IMedia
 
     public string MessageToDisplay { get; set; }
 
+    public string Name => "DABRadioCD";
+
     //Constructores
     public DABRadioCD()
     {

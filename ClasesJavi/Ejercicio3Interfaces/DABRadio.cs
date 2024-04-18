@@ -23,6 +23,8 @@ public class DABRadio : IMedia, IComparable
 
     public MediaState State{get;set;}
 
+    public string Name => "DABRadio";
+
     public DABRadio(){
         Frecuency = MIN_FRECUENCY;
         State = MediaState.Stopped;

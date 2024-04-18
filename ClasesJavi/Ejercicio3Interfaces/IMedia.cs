@@ -1,7 +1,6 @@
-public interface IMedia
+public interface IMedia :IMessageToDisplay
 {
-
-    string MessageToDisplay{get;}
+    string Name { get; }
     void Play();
     void Stop();
     void Pause();
