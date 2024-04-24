@@ -1,142 +1,115 @@
-﻿using System.Text;
+﻿
+// Crear una lista enlazada de una clase personalizada que represente, por ejemplo, empleados. La clase Empleado podría tener propiedades como nombre, salario, etc.
+// Implementar funciones para agregar, eliminar y buscar empleados en la lista enlazada.
+// Escribir código para recorrer la lista enlazada e imprimir los detalles de cada empleado.
+// Experimentar con diferentes métodos proporcionados por la clase LinkedList<T>, como AddFirst, RemoveLast, Find, etc
 
-public class Euro
+using System.Collections;
+using System.ComponentModel;
+
+public class Nodo<T> : IDisposable
+//Me creo una clase Nodo, donde mis propiedades son las siguientes:
+// Dato = al tipo de dato que va tener lo que le pase a mi nodo
+// Nodo = Un objeto de tipo nodo para que pueda referenciar a otro o que este me pueda referenciar a mi
 {
-    private double valor;
+    public Nodo<T>? Siguiente { get; set;}
+    private T Dato;
 
-    public Euro(double valor){
-        Valor = valor;
+    public Nodo(T dato){
+        Siguiente = null;
+        Dato = dato;
     }
-    public double Valor{
-        get=> valor;
-        set=> valor = value;
-    }
-    public override string ToString()
+    public void Dispose()
     {
-        return $"{Valor}€";
+       Siguiente = null;
+       if (Dato is IDisposable d)
+       {
+         d.Dispose();
+       }
+
     }
-
-    //Operadores binarios aritméticos:
-    //Suma
-    public static Euro operator +(Euro e1, Euro e2) {
-        return new Euro(e1.valor + e2.valor);
-    }
-
-    public static Euro operator +(Euro e1, Pesetas p1) {
-        return new Euro(e1.valor + (p1.Valor/166.386));
-    }
-
-    //Resta
-    public static Euro operator -(Euro e1, Euro e2) {
-        return new Euro(e1.valor - e2.valor);
-    }
-
-    public static Euro operator -(Euro e1, Pesetas p1) {
-        return new Euro(e1.valor - (p1.Valor/166.386));
-    }
-
-    //Operadores binarios comparacion
-
-    //Redefiniciones necesarias primero
-    public override int GetHashCode()
-    {
-        return $"{valor:F2}".GetHashCode();
-    }
-
-    public override bool Equals(object? obj)
-    {
-        Euro euro = obj as Euro;
-        return base.Equals(valor == euro.valor);
-    }
-
-    public static bool operator ==(Euro e1, Euro e2) => e1.Equals(e2);
-    public static bool operator !=(Euro e1, Euro e2) => !e1.Equals(e2);
-
-    //Operadores ++ y --
-    //e++
-    public static Euro operator ++(Euro e) => new Euro(e.Valor + 1.0);
-    //e--
-    public static Euro operator --(Euro e) => new Euro(e.Valor - 1.0);
-
-    //Casting implicito
-    public static implicit operator double(Euro e) => Convert.ToDouble(e.Valor);
-    public static implicit operator Pesetas(Euro e) => new Pesetas(e.valor*166.386);
 }
-public class Pesetas{
-    private double valor;
-    
-    public Pesetas(double valor){
-        Valor = valor;
+
+public class MiListaSimlementeEnlazada<T> : IEnumerable<T> where T : IComparable{
+
+    public Nodo<T>? Primero { get; private set;}
+    public Nodo<T>? Ultimo  { get; private set;}
+    public int Longitud {get; private set;}
+
+    public bool Vacia => Longitud == 0;
+
+    public MiListaSimlementeEnlazada(IEnumerable dato){
+        Primero = null;
+        Ultimo = null;
+        Longitud = 0;
     }
-    public double Valor{
-        get=> valor;
-        set=> valor = value;
-    }
-     public override string ToString()
-    {
-        return $"{Valor}ptas.";
-    }
-    //Operadores binarios aritméticos:
-    //Suma
-    public static Pesetas operator +(Pesetas e1, Pesetas e2) {
-        return new Pesetas(e1.valor + e2.valor);
+   
+
+    public void AYadirCuandoEsteVacia(T dato){
+
+        Nodo<T> nuevo = new Nodo<T>(dato);
+        Primero = nuevo;
+        Ultimo = nuevo;
+        Longitud ++;
     }
 
-    public static Pesetas operator +(Pesetas p1, Euro e1) {
-        return new Pesetas((e1.Valor*166.386) + p1.Valor);
+    public void AyadirAlPrincipioDeLaLista(T dato){
+        Nodo<T> nuevo = new Nodo<T>(dato);
+        Primero = nuevo;
+        nuevo.Siguiente = Primero;
+        Longitud ++;
+
     }
 
-    //Resta
-        public static Pesetas operator -(Pesetas p1, Pesetas p2) {
-        return new Pesetas(p1.valor - p2.valor);
+    public void AyadirAlFinalDeLaLista(T dato){
+
+        Nodo<T> nuevo = new Nodo<T>(dato);
+        Ultimo = nuevo;
+        Ultimo.Siguiente = nuevo;
+        if (Vacia)
+        {
+            Primero = nuevo;
+        }
+        Longitud ++;
+
     }
 
-    public static Pesetas operator -(Pesetas p1, Euro e1) {
-        Pesetas p2 = e1;
-        return new Pesetas(p1.valor - p2.valor);
+    public class ListaVaciaExpetion : Exception{
+        public ListaVaciaExpetion(string message):base( message){}
     }
 
-    //Operadores binarios comparacion
+    public void AyadirEnCualquierPosicion(T dato, Nodo<T> nodo){
 
-    //Redefiniciones necesarias primero
-    public override int GetHashCode()
-    {
-        return $"{valor:F2}".GetHashCode();
+        Nodo<T> nuevo = new Nodo<T>(dato);
+        if (Vacia)
+        {
+            throw new ListaVaciaExpetion("La lista no puede estar vacia");
+        }
+        nuevo.Siguiente = nodo.Siguiente;
+        nodo.Siguiente= nuevo;
+        if (Ultimo == nodo) Ultimo = nuevo;
+        Longitud ++;
+
     }
 
-    public override bool Equals(object? obj)
-    {
-        Pesetas pesetas = obj as Pesetas;
-        return base.Equals(valor == pesetas.valor);
-    }
-
-    public static bool operator ==(Pesetas p1, Pesetas p2) => p1.Equals(p2);
-    public static bool operator !=(Pesetas p1, Pesetas p2) => !p1.Equals(p2);
-
-    //Operadores ++ y --
-    //e++
-    public static Pesetas operator ++(Pesetas p) => new Pesetas(p.Valor + 1.0);
-    //e--
-    public static Pesetas operator --(Pesetas p) => new Pesetas(p.Valor - 1.0);
-    
-    //Casting implicito
-    public static implicit operator double(Pesetas p) => Convert.ToDouble(p.Valor);
-    public static implicit operator Euro(Pesetas p) => new Euro(p.valor/166.386);
+   
 }
 
 
 public class Program
 {
-    static void Main(){
-        Euro e1 = new Euro(1.67);
-        Euro e2 = new Euro(3.0);
-        Euro e3 = e1 + e2;
-        Euro e4 = e2 - e1;
-        Pesetas p1 = new Pesetas(1.67);
-        Euro e5 = e1 + p1;
-        Pesetas p2 = p1 + p1;
-        Pesetas p3 = p1 + e1;
-        double d1 = e1;
-        Pesetas pesetas = e1;
+    static void Main(string[] args){
+
+        MiListaSimlementeEnlazada<int> miLista = new MiListaSimlementeEnlazada<int>();
+        miLista.AyadirAlPrincipioDeLaLista(2);
+        miLista.AyadirAlPrincipioDeLaLista(3);
+        miLista.AyadirAlPrincipioDeLaLista(4);
+        miLista.AyadirAlPrincipioDeLaLista(5);
+
+        foreach(var numero in miLista){
+
+        }
+
+
     }
 }

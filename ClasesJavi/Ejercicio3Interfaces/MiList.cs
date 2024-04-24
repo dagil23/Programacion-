@@ -1,6 +1,6 @@
 
 
-//  Ejercicio 2. (5 puntos)
+//  
 // ----------------------------------------------------------------------------
 /*
 Este es un ejercicio de examen que no intenta ser un ejemplo de ejercicio en la vida real
