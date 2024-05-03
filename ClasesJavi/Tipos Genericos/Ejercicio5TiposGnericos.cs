@@ -1,66 +1,66 @@
 ﻿
-// public interface ICumplePredicado<T>
-// {
-//     public bool Predicado(T o1, T o2);
+public interface ICumplePredicado<T>
+{
+    public bool Predicado(T o1, T o2);
 
-// }
-// public interface IObtenTemperatura
-// {
-//     public float ObtenTemperatura(TemperaturasXProvincia provincia);
-// }
-// public class TemperaturasXProvincia
-// {
-//     public string Provincia { get; }
-//     public float TemperaturaMaxima { get; }
-//     public float TemperaturaMinima { get; }
+}
+public interface IObtenTemperatura
+{
+    public float ObtenTemperatura(TemperaturasXProvincia provincia);
+}
+public class TemperaturasXProvincia
+{
+    public string Provincia { get; }
+    public float TemperaturaMaxima { get; }
+    public float TemperaturaMinima { get; }
 
-//     public TemperaturasXProvincia(string provincia,
-//                 float temperaturaMaxima,
-//                 float temperaturaMinima)
-//     {
-//         Provincia = provincia;
-//         TemperaturaMaxima = temperaturaMaxima;
-//         TemperaturaMinima = temperaturaMinima;
-//     }
-// }
-// public class ObtenMaxima : IObtenTemperatura
-// {
-//     public float ObtenTemperatura(TemperaturasXProvincia provincia)
-//     {
-//         return provincia.TemperaturaMaxima;
-//     }
-// }
+    public TemperaturasXProvincia(string provincia,
+                float temperaturaMaxima,
+                float temperaturaMinima)
+    {
+        Provincia = provincia;
+        TemperaturaMaxima = temperaturaMaxima;
+        TemperaturaMinima = temperaturaMinima;
+    }
+}
+public class ObtenMaxima : IObtenTemperatura
+{
+    public float ObtenTemperatura(TemperaturasXProvincia provincia)
+    {
+        return provincia.TemperaturaMaxima;
+    }
+}
 
-// public class ObtenMinima : IObtenTemperatura
-// {
-//     public float ObtenTemperatura(TemperaturasXProvincia provincia)
-//     {
-//         return provincia.TemperaturaMinima;
-//     }
-// }
+public class ObtenMinima : IObtenTemperatura
+{
+    public float ObtenTemperatura(TemperaturasXProvincia provincia)
+    {
+        return provincia.TemperaturaMinima;
+    }
+}
 
-// public class MayorQue : ICumplePredicado<float>
-// {
-//     public bool Predicado(float o1, float o2)
-//     {
-//         return o1 > o2;
-//     }
-// }
+public class MayorQue : ICumplePredicado<float>
+{
+    public bool Predicado(float o1, float o2)
+    {
+        return o1 > o2;
+    }
+}
 
-// public class MenorQue : ICumplePredicado<float>
-// {
-//     public bool Predicado(float o1, float o2)
-//     {
-//         return o1 < o2;
-//     }
-// }
-// public class IgualQue : ICumplePredicado<float>
-// {
-//     public bool Predicado(float o1, float o2)
-//     {
-//         return o1 == o2;
-//     }
-// }
+public class MenorQue : ICumplePredicado<float>
+{
+    public bool Predicado(float o1, float o2)
+    {
+        return o1 < o2;
+    }
+}
+public class IgualQue : ICumplePredicado<float>
+{
+    public bool Predicado(float o1, float o2)
+    {
+        return o1 == o2;
+    }
+}
 
 // public class Program
 // {
