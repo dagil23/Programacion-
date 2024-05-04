@@ -1,142 +1,69 @@
-﻿using System.Text;
+﻿// Crea una aplicación con un método estático genérico Mostrar,
+// al que le pases una matriz del tipo T y la muestre con una correcta tabulación. 
+// Posteriormente, prueba este método con diferentes tipos.
 
-public class Euro
+// Posible ejemplo de una llamada con float y otra con string ...
+
+// 3 4 5
+// 2,4 4,4 5
+
+// SAL AGUA AZUCAR VINO
+// COLA CAFE ZUMO LECHE
+// Crea un objeto delegado predefinido genérico de la BCL para el método Mostrar y comprueba su funcionamiento.
+public class Ejercicio3_Delegados
 {
-    private double valor;
-
-    public Euro(double valor){
-        Valor = valor;
-    }
-    public double Valor{
-        get=> valor;
-        set=> valor = value;
-    }
-    public override string ToString()
+    public static void Separador(){Console.WriteLine("--------------------------------------------");}
+    public static void Mostrar<T>(T[,] matriz)
     {
-        return $"{Valor}€";
+        for (int i = 0; i < matriz.GetLength(0); i++)
+        {
+            for (int j = 0; j < matriz.GetLength(1); j++)
+            {
+                Console.Write(matriz[i, j] + " ");
+            }
+            Console.WriteLine();
+        }
     }
-
-    //Operadores binarios aritméticos:
-    //Suma
-    public static Euro operator +(Euro e1, Euro e2) {
-        return new Euro(e1.valor + e2.valor);
-    }
-
-    public static Euro operator +(Euro e1, Pesetas p1) {
-        return new Euro(e1.valor + (p1.Valor/166.386));
-    }
-
-    //Resta
-    public static Euro operator -(Euro e1, Euro e2) {
-        return new Euro(e1.valor - e2.valor);
-    }
-
-    public static Euro operator -(Euro e1, Pesetas p1) {
-        return new Euro(e1.valor - (p1.Valor/166.386));
-    }
-
-    //Operadores binarios comparacion
-
-    //Redefiniciones necesarias primero
-    public override int GetHashCode()
+    public static int [,] RellenarMatrizNumeros(int filas, int columnas)
     {
-        return $"{valor:F2}".GetHashCode();
+        int [,] matriz = new int[filas,columnas];
+        for (int i = 0; i < filas; i++)
+        {
+            for (int j = 0; j < columnas; j++)
+            {
+                matriz[i, j] = i * columnas + j + 1;
+            }
+        }
+        return matriz;
     }
-
-    public override bool Equals(object? obj)
+    public static string[,] RellenarMatrizString(int filas, int columnas){
+        string [,] matriz = new string[filas,columnas];
+         for (int i = 0; i < filas; i++)
+        {
+            for (int j = 0; j < columnas; j++)
+            {
+                Console.WriteLine($"Introduce una cadena para la fila {i+1} columna {j+1} :\n");
+                matriz[i, j] = Console.ReadLine()??"";
+            }
+        }
+        return matriz;
+    }
+    public static void Main(string[] args)
     {
-        Euro euro = obj as Euro;
-        return base.Equals(valor == euro.valor);
-    }
-
-    public static bool operator ==(Euro e1, Euro e2) => e1.Equals(e2);
-    public static bool operator !=(Euro e1, Euro e2) => !e1.Equals(e2);
-
-    //Operadores ++ y --
-    //e++
-    public static Euro operator ++(Euro e) => new Euro(e.Valor + 1.0);
-    //e--
-    public static Euro operator --(Euro e) => new Euro(e.Valor - 1.0);
-
-    //Casting implicito
-    public static implicit operator double(Euro e) => Convert.ToDouble(e.Valor);
-    public static implicit operator Pesetas(Euro e) => new Pesetas(e.valor*166.386);
-}
-public class Pesetas{
-    private double valor;
+        const int filas = 3;
+        const int columnas = 3;
+        Action<int[,]> MuestraMatrizEnteros = Mostrar;
+        int[,] matriz = RellenarMatrizNumeros(filas,columnas);
+        Separador();
+        MuestraMatrizEnteros(matriz);
+        Separador();
+        Action<string[,]> MuestraMatrizString = Mostrar;
+        string[,] matrizString = RellenarMatrizString(filas,columnas);
+        Separador();
+        MuestraMatrizString(matrizString);
+        Separador();
     
-    public Pesetas(double valor){
-        Valor = valor;
-    }
-    public double Valor{
-        get=> valor;
-        set=> valor = value;
-    }
-     public override string ToString()
-    {
-        return $"{Valor}ptas.";
-    }
-    //Operadores binarios aritméticos:
-    //Suma
-    public static Pesetas operator +(Pesetas e1, Pesetas e2) {
-        return new Pesetas(e1.valor + e2.valor);
-    }
-
-    public static Pesetas operator +(Pesetas p1, Euro e1) {
-        return new Pesetas((e1.Valor*166.386) + p1.Valor);
-    }
-
-    //Resta
-        public static Pesetas operator -(Pesetas p1, Pesetas p2) {
-        return new Pesetas(p1.valor - p2.valor);
-    }
-
-    public static Pesetas operator -(Pesetas p1, Euro e1) {
-        Pesetas p2 = e1;
-        return new Pesetas(p1.valor - p2.valor);
-    }
-
-    //Operadores binarios comparacion
-
-    //Redefiniciones necesarias primero
-    public override int GetHashCode()
-    {
-        return $"{valor:F2}".GetHashCode();
-    }
-
-    public override bool Equals(object? obj)
-    {
-        Pesetas pesetas = obj as Pesetas;
-        return base.Equals(valor == pesetas.valor);
-    }
-
-    public static bool operator ==(Pesetas p1, Pesetas p2) => p1.Equals(p2);
-    public static bool operator !=(Pesetas p1, Pesetas p2) => !p1.Equals(p2);
-
-    //Operadores ++ y --
-    //e++
-    public static Pesetas operator ++(Pesetas p) => new Pesetas(p.Valor + 1.0);
-    //e--
-    public static Pesetas operator --(Pesetas p) => new Pesetas(p.Valor - 1.0);
-    
-    //Casting implicito
-    public static implicit operator double(Pesetas p) => Convert.ToDouble(p.Valor);
-    public static implicit operator Euro(Pesetas p) => new Euro(p.valor/166.386);
-}
 
 
-public class Program
-{
-    static void Main(){
-        Euro e1 = new Euro(1.67);
-        Euro e2 = new Euro(3.0);
-        Euro e3 = e1 + e2;
-        Euro e4 = e2 - e1;
-        Pesetas p1 = new Pesetas(1.67);
-        Euro e5 = e1 + p1;
-        Pesetas p2 = p1 + p1;
-        Pesetas p3 = p1 + e1;
-        double d1 = e1;
-        Pesetas pesetas = e1;
     }
 }

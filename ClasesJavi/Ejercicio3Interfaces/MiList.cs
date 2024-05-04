@@ -86,31 +86,31 @@ public class NoHayElementosEnLaPilaException: Exception {
     public NoHayElementosEnLaPilaException(string message) : base(message) {}
 }
 
-public class Program
-{
+// public class Program
+// {
  
    
-     public static void ImprimePila(MiPila<string> pila) => Console.WriteLine("Pila: " + pila);
+//      public static void ImprimePila(MiPila<string> pila) => Console.WriteLine("Pila: " + pila);
 
-    static  void Main(string[] args){
+//     static  void Main(string[] args){
 
-         var pila = new MiPila<string>();
+//          var pila = new MiPila<string>();
 
-        if (!pila.Vacia()) Console.WriteLine("Error. La pila debería estar vacía");
-        ImprimePila(pila);
-        pila.Apilar("Ana");
-        if (pila.Vacia()) Console.WriteLine("Error. La pila no debería estar vacía");
-        pila.Apilar("Carlos");
-        pila.Apilar("Andrea");
-        ImprimePila(pila);
+//         if (!pila.Vacia()) Console.WriteLine("Error. La pila debería estar vacía");
+//         ImprimePila(pila);
+//         pila.Apilar("Ana");
+//         if (pila.Vacia()) Console.WriteLine("Error. La pila no debería estar vacía");
+//         pila.Apilar("Carlos");
+//         pila.Apilar("Andrea");
+//         ImprimePila(pila);
 
-        Console.Write("Desapilando de la pila los elementos: ");
-        while (!pila.Vacia())
-            Console.Write(pila.Desapilar() + " ");
-        Console.WriteLine();
-        ImprimePila(pila);
+//         Console.Write("Desapilando de la pila los elementos: ");
+//         while (!pila.Vacia())
+//             Console.Write(pila.Desapilar() + " ");
+//         Console.WriteLine();
+//         ImprimePila(pila);
 
-        Console.WriteLine(pila.ConsultarCabeza()); // Debe generar un error
-    }
+//         Console.WriteLine(pila.ConsultarCabeza()); // Debe generar un error
+//     }
 
-}
+// }
